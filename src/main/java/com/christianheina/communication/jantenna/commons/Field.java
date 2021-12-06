@@ -77,7 +77,7 @@ public class Field {
      * Each value corresponds to angle with same index in {@link #getThetaPhiList() getThetaPhiList}.
      * 
      * @param electricField
-     *            the {@link ElectricalField} to retrieve.
+     *            the {@link ElectricField} to retrieve.
      * 
      * @return {@link List} of {@link Complex} representing the field.
      */
@@ -88,7 +88,7 @@ public class Field {
     /**
      * Get available electrical fields in object instance.
      * 
-     * @return {@link Set} of {@link ElectricalField}.
+     * @return {@link Set} of {@link ElectricField}.
      */
     public Set<ElectricField> getAvailableElectricFields() {
         return electricFieldMap.keySet();
@@ -150,7 +150,7 @@ public class Field {
          * Add electrical field.
          * 
          * @param electricField
-         *            {@link ElectricalField} to add.
+         *            {@link ElectricField} to add.
          * @param electricFieldData
          *            {link List} of {@link Complex} representing the field values to add.<br>
          *            Each value corresponds to angle set in {@link #setThetaPhiList(List) setThetaPhiList} with same
