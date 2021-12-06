@@ -32,6 +32,12 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<commons-math3.version>3.6.1</commons-math3.version>
 		<testng.version>7.4.0</testng.version>
+		<formatter-maven-plugin.version>2.16.0</formatter-maven-plugin.version>
+		<maven-release-plugin.version>3.0.0-M4</maven-release-plugin.version>
+		<maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
+		<maven-checkstyle-plugin.version>2.15</maven-checkstyle-plugin.version>
+		<maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
+		<maven-source-plugin.version>3.2.0</maven-source-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -49,11 +55,19 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<testResources>
+			<testResource>
+				<directory>src/site</directory>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
 		<plugins>
 			<plugin>
 				<groupId>net.revelc.code.formatter</groupId>
 				<artifactId>formatter-maven-plugin</artifactId>
-				<version>2.16.0</version>
+				<version>${formatter-maven-plugin.version}</version>
 				<configuration>
 					<lineEnding>LF</lineEnding>
 					<compilerSource>${maven.compiler.source}</compilerSource>
@@ -80,8 +94,23 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>${maven-release-plugin.version}</version>
+				<configuration>
+					<preparationGoals>clean verify</preparationGoals>
+					<goals>deploy</goals>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>${maven-deploy-plugin.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.15</version>
+				<version>${maven-checkstyle-plugin.version}</version>
 				<configuration>
 					<logViolationsToConsole>true</logViolationsToConsole>
 					<checkstyleRules>
@@ -93,9 +122,63 @@
 					</checkstyleRules>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-javadoc</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven-source-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-source</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-
+	<profiles>
+		<profile>
+			<id>deploy</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>3.0.1</version>
+						<configuration>
+							<gpgArguments>
+								<arg>--pinentry-mode</arg>
+								<arg>loopback</arg>
+							</gpgArguments>
+						</configuration>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -105,18 +188,27 @@
 	<developers>
 		<developer>
 			<name>Christian Heina</name>
+			<email>developer@christianheina.com</email>
 		</developer>
 	</developers>
 	<distributionManagement>
 		<repository>
 			<id>ossrh</id>
 			<name>Central Repository OSSRH</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
 	<scm>
-		<connection>scm:git:git://github.com/christianheina/jantenna-commons.git</connection>
-		<developerConnection>scm:git:ssh://github.com:christianheina/jantenna-commons.git</developerConnection>
+		<connection>scm:git:https://github.com/christianheina/jantenna-commons.git</connection>
+		<developerConnection>scm:git:https://github.com:christianheina/jantenna-commons.git</developerConnection>
 		<url>https://github.com/christianheina/jantenna-commons/tree/main</url>
 	</scm>
+	<issueManagement>
+		<url>https://github.com/christianheina/jantenna-commons/issues</url>
+		<system>github</system>
+	</issueManagement>
+	<ciManagement>
+		<system>Github Actions</system>
+		<url>https://github.com/christianheina/jantenna-commons/actions</url>
+	</ciManagement>
 </project>
