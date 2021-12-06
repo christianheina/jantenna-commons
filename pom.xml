@@ -202,6 +202,7 @@
 		<connection>scm:git:https://github.com/christianheina/jantenna-commons.git</connection>
 		<developerConnection>scm:git:https://github.com:christianheina/jantenna-commons.git</developerConnection>
 		<url>https://github.com/christianheina/jantenna-commons/tree/main</url>
+		<tag>HEAD</tag>
 	</scm>
 	<issueManagement>
 		<url>https://github.com/christianheina/jantenna-commons/issues</url>
