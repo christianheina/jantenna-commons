@@ -23,11 +23,6 @@ import org.apache.commons.math3.complex.Complex;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.christianheina.communication.jantenna.commons.ElectricField;
-import com.christianheina.communication.jantenna.commons.Field;
-import com.christianheina.communication.jantenna.commons.FieldType;
-import com.christianheina.communication.jantenna.commons.ThetaPhi;
-
 /**
  * Unit test for {@link Field}
  * 

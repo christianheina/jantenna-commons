@@ -21,8 +21,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.christianheina.communication.jantenna.commons.Element;
-
 /**
  * Unit test for {@link Element}
  * 

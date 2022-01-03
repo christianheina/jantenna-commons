@@ -26,8 +26,6 @@ import java.util.stream.Collectors;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.christianheina.communication.jantenna.commons.ThetaPhi;
-
 /**
  * Unit test for {@link ThetaPhi}
  * 

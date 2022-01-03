@@ -19,9 +19,6 @@ package com.christianheina.communication.jantenna.commons;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.christianheina.communication.jantenna.commons.Constants;
-import com.christianheina.communication.jantenna.commons.Util;
-
 /**
  * Unit test for {@link Util}
  * 

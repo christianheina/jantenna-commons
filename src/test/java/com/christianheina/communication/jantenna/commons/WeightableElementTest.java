@@ -22,8 +22,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.christianheina.communication.jantenna.commons.WeightableElement;
-
 /**
  * Unit test for {@link WeightableElement}
  * 

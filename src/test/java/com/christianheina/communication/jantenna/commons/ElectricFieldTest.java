@@ -19,8 +19,6 @@ package com.christianheina.communication.jantenna.commons;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.christianheina.communication.jantenna.commons.ElectricField;
-
 /**
  * Unit test for {@link ElectricField}.
  * 
