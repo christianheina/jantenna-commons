@@ -26,8 +26,7 @@ import com.christianheina.communication.jantenna.commons.Element;
 /**
  * Unit test for {@link Element}
  * 
- * @author Christian Heina
- *
+ * @author Christian Heina (developer@christianheina.com)
  */
 @SuppressWarnings("javadoc")
 public class ElementTest {

@@ -21,7 +21,7 @@ import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
 /**
  * Element Data Model
  * 
- * @author Christian Heina
+ * @author Christian Heina (developer@christianheina.com)
  */
 public class Element {
 

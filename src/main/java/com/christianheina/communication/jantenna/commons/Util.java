@@ -19,7 +19,7 @@ package com.christianheina.communication.jantenna.commons;
 /**
  * Utilities for antenna.
  * 
- * @author Christian Heina
+ * @author Christian Heina (developer@christianheina.com)
  */
 public class Util {
 

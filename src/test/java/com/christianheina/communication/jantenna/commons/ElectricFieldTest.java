@@ -24,7 +24,7 @@ import com.christianheina.communication.jantenna.commons.ElectricField;
 /**
  * Unit test for {@link ElectricField}.
  * 
- * @author Christian Heina
+ * @author Christian Heina (developer@christianheina.com)
  */
 @SuppressWarnings("javadoc")
 public class ElectricFieldTest {

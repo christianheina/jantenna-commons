@@ -19,7 +19,7 @@ package com.christianheina.communication.jantenna.commons;
 /**
  * Electric field (E-field)
  * 
- * @author Christian Heina
+ * @author Christian Heina (developer@christianheina.com)
  */
 public enum ElectricField {
     /**

@@ -31,7 +31,7 @@ import com.christianheina.communication.jantenna.commons.ThetaPhi;
 /**
  * Unit test for {@link ThetaPhi}
  * 
- * @author Christian Heina
+ * @author Christian Heina (developer@christianheina.com)
  */
 @SuppressWarnings("javadoc")
 public class ThetaPhiTest {

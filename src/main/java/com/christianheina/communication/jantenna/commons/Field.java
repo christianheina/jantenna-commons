@@ -27,7 +27,7 @@ import org.apache.commons.math3.complex.Complex;
 /**
  * Field Data Model
  * 
- * @author Christian Heina
+ * @author Christian Heina (developer@christianheina.com)
  */
 public class Field {
 

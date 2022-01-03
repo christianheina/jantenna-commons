@@ -23,7 +23,7 @@ import java.util.List;
  * Theta Phi Data Model.<br>
  * Theta and phi coordinates are in radians.
  * 
- * @author Christian Heina
+ * @author Christian Heina (developer@christianheina.com)
  */
 public class ThetaPhi {
 

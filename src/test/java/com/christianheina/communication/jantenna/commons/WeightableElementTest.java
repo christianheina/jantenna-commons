@@ -27,7 +27,7 @@ import com.christianheina.communication.jantenna.commons.WeightableElement;
 /**
  * Unit test for {@link WeightableElement}
  * 
- * @author Christian Heina
+ * @author Christian Heina (developer@christianheina.com)
  */
 @SuppressWarnings("javadoc")
 public class WeightableElementTest {

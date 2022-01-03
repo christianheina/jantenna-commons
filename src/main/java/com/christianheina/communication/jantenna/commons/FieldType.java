@@ -19,7 +19,7 @@ package com.christianheina.communication.jantenna.commons;
 /**
  * Field type.
  * 
- * @author Christian Heina
+ * @author Christian Heina (developer@christianheina.com)
  */
 public enum FieldType {
     /**
