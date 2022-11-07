@@ -19,7 +19,7 @@
 
 	<groupId>com.christianheina.communication</groupId>
 	<artifactId>jantenna-commons</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<packaging>jar</packaging>
 
 	<name>JAntenna Commons</name>
@@ -208,7 +208,7 @@
 		<connection>scm:git:https://github.com/christianheina/jantenna-commons.git</connection>
 		<developerConnection>scm:git:https://github.com/christianheina/jantenna-commons.git</developerConnection>
 		<url>https://github.com/christianheina/jantenna-commons/tree/main</url>
-		<tag>HEAD</tag>
+		<tag>jantenna-commons-0.0.2</tag>
 	</scm>
 	<issueManagement>
 		<url>https://github.com/christianheina/jantenna-commons/issues</url>
