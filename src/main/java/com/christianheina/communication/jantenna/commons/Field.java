@@ -16,6 +16,11 @@
 
 package com.christianheina.communication.jantenna.commons;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +28,9 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.math3.complex.Complex;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 /**
  * Field Data Model
@@ -50,6 +58,48 @@ public class Field {
      */
     public static Builder newBuilder() {
         return new Builder();
+    }
+
+    /**
+     * Load json data to field.
+     * 
+     * @param filename
+     *            name of file to load
+     * 
+     * @return new instance of field containing json data.
+     * 
+     * @throws IOException
+     *             if an I/O error occurs opening the file
+     */
+    public static Field loadJson(String filename) throws IOException {
+        try (Reader reader = Files.newBufferedReader(Paths.get(filename))) {
+            return new Gson().fromJson(reader, Field.class);
+        }
+    }
+
+    /**
+     * Save field data to json file.
+     * 
+     * @param filename
+     *            name of saved file
+     * 
+     * @throws IOException
+     *             if the named file exists but is a directory rather than a regular file, does not exist but cannot be
+     *             created, or cannot be opened for any other reason
+     */
+    public void saveJson(String filename) throws IOException {
+        try (FileWriter writer = new FileWriter(filename)) {
+            new Gson().toJson(toJson(), writer);
+        }
+    }
+
+    /**
+     * Convert field data to json.
+     * 
+     * @return field data as json object
+     */
+    public JsonElement toJson() {
+        return new Gson().toJsonTree(this);
     }
 
     /**

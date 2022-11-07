@@ -23,6 +23,9 @@ package com.christianheina.communication.jantenna.commons;
  */
 public class Constants {
 
+    private Constants() {
+        /* Hidden Constructor */ }
+
     /**
      * Speed of light in VACCUM.
      */

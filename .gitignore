@@ -221,3 +221,6 @@ buildNumber.properties
 test-output
 test-output-tests
 testng.iml
+
+# Example files
+example_save_field.json
