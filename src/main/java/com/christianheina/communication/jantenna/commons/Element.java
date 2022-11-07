@@ -25,7 +25,13 @@ import org.apache.commons.math3.geometry.euclidean.threed.Vector3D;
  */
 public class Element {
 
+    /**
+     * Element position
+     */
     protected Vector3D elementLocation;
+    /**
+     * Resonance frequency
+     */
     protected double designFrequency;
 
     /**
