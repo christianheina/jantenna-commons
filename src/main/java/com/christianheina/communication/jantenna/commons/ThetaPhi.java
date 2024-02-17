@@ -105,4 +105,18 @@ public class ThetaPhi {
         return angleList;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) {
+            return true;
+        }
+
+        if (!(o instanceof ThetaPhi)) {
+            return false;
+        }
+
+        ThetaPhi p = (ThetaPhi) o;
+        return Double.compare(getPhi(), p.getPhi()) == 0 && Double.compare(getTheta(), p.getTheta()) == 0;
+    }
+
 }

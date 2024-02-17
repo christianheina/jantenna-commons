@@ -29,6 +29,7 @@ import java.util.Set;
 
 import org.apache.commons.math3.complex.Complex;
 
+import com.christianheina.communication.jantenna.commons.exceptions.AntennaException;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
@@ -58,6 +59,50 @@ public class Field {
      */
     public static Builder newBuilder() {
         return new Builder();
+    }
+
+    /**
+     * Multiply field by other field.<br>
+     * Multiplication is done for each {@link ElectricField}, angle ({@link ThetaPhi}) by angle.
+     * 
+     * @param toMultiplyWith
+     *            field to multiply with.
+     * 
+     * @return new instance containing multiplied results. Returned instance will have the same {@link FieldType},
+     *         electric fields ({@link ElectricField}) and angles ({@link ThetaPhi}). Default frequency,
+     *         {@value Builder#DEFAULT_FREQUENCY}, is used unless both fields have the same frequency in which case this
+     *         frequency value will be used.
+     * 
+     * @throws AntennaException
+     *             {@link ThetaPhi} angles are not the same, available {@link ElectricField} are not the same or
+     *             {@link FieldType} is not the same.
+     */
+    public Field multiply(Field toMultiplyWith) {
+        if (!getThetaPhiList().equals(toMultiplyWith.getThetaPhiList())) {
+            throw new AntennaException("Fields needs to have the same angles");
+        }
+        if (!getAvailableElectricFields().equals(toMultiplyWith.getAvailableElectricFields())) {
+            throw new AntennaException("Fields needs to have the same electrical fields");
+        }
+        if (getFieldType() != toMultiplyWith.getFieldType()) {
+            throw new AntennaException("Fields needs to have the same field type");
+        }
+
+        Builder builder = newBuilder().setFieldType(getFieldType()).setThetaPhiList(getThetaPhiList());
+        if (getFrequency() == toMultiplyWith.getFrequency()) {
+            builder.setFreqency(getFrequency());
+        }
+        for (ElectricField electricField : getAvailableElectricFields()) {
+            List<Complex> multipliedElectricFieldData = new ArrayList<>();
+            List<Complex> thisElectricFieldData = getElectricField(electricField);
+            List<Complex> toMultiplyElectricFieldData = toMultiplyWith.getElectricField(electricField);
+            for (int i = 0; i < getElectricField(electricField).size(); i++) {
+                multipliedElectricFieldData
+                        .add(thisElectricFieldData.get(i).multiply(toMultiplyElectricFieldData.get(i)));
+            }
+            builder.addElectricField(electricField, multipliedElectricFieldData);
+        }
+        return builder.build();
     }
 
     /**
@@ -160,10 +205,13 @@ public class Field {
      */
     public static class Builder {
 
-        private FieldType fieldType = FieldType.FARFIELD;
+        private static final FieldType DEFAULT_FIELD_TYPE = FieldType.FARFIELD;
+        private static final double DEFAULT_FREQUENCY = -1;
+
+        private FieldType fieldType = DEFAULT_FIELD_TYPE;
         private List<ThetaPhi> thetaPhiList = new ArrayList<>();
         private Map<ElectricField, List<Complex>> electricFieldMap = new HashMap<>();
-        private double frequency = -1;
+        private double frequency = DEFAULT_FREQUENCY;
 
         private Builder() {
             /* Hidden Constructor */}

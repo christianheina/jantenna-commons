@@ -27,6 +27,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.christianheina.communication.jantenna.commons.exceptions.AntennaException;
+
 /**
  * Unit test for {@link Field}
  * 
@@ -84,6 +86,59 @@ public class FieldTest {
         Assert.assertTrue(field.getThetaPhiList().size() == loadedfield.getThetaPhiList().size());
         Assert.assertTrue(field.getThetaPhiList().get(0).getTheta() == loadedfield.getThetaPhiList().get(0).getTheta());
         Assert.assertTrue(field.getThetaPhiList().get(0).getPhi() == loadedfield.getThetaPhiList().get(0).getPhi());
+    }
+
+    @Test(groups = "useCommonField")
+    public void multiplyTest() {
+        Field multipliedField = field.multiply(field);
+        Assert.assertEquals(multipliedField.getAvailableElectricFields(), field.getAvailableElectricFields());
+        Assert.assertEquals(multipliedField.getFieldType(), field.getFieldType());
+        Assert.assertEquals(multipliedField.getThetaPhiList(), field.getThetaPhiList());
+        Assert.assertEquals(multipliedField.getFrequency(), field.getFrequency());
+        Assert.assertEquals(multipliedField.getElectricField(ElectricField.RELATIVE_GAIN).size(),
+                field.getElectricField(ElectricField.RELATIVE_GAIN).size());
+        Assert.assertEquals(multipliedField.getElectricField(ElectricField.RELATIVE_GAIN).get(0), new Complex(1, 0));
+
+        List<Complex> electricField = new ArrayList<>();
+        electricField.add(new Complex(0, 0));
+        List<ThetaPhi> thetaPhiList = new ArrayList<>();
+        thetaPhiList.add(ThetaPhi.fromDegrees(90, 0));
+        Field differentField = Field.newBuilder().addElectricField(ElectricField.RELATIVE_GAIN, electricField)
+                .setThetaPhiList(thetaPhiList).setFieldType(FieldType.FARFIELD).build();
+        multipliedField = field.multiply(differentField);
+        Assert.assertEquals(multipliedField.getAvailableElectricFields(), field.getAvailableElectricFields());
+        Assert.assertEquals(multipliedField.getFieldType(), field.getFieldType());
+        Assert.assertEquals(multipliedField.getThetaPhiList(), field.getThetaPhiList());
+        Assert.assertNotEquals(multipliedField.getFrequency(), field.getFrequency());
+        Assert.assertEquals(multipliedField.getElectricField(ElectricField.RELATIVE_GAIN).size(),
+                field.getElectricField(ElectricField.RELATIVE_GAIN).size());
+        Assert.assertEquals(multipliedField.getElectricField(ElectricField.RELATIVE_GAIN).get(0), new Complex(0, 0));
+    }
+
+    @Test(expectedExceptions = AntennaException.class, groups = "useCommonField")
+    public void multiplyExceptionDifferentThetaPhiTest() {
+        Field differentThetaPhiAnglesField = Field.newBuilder().setThetaPhiList(new ArrayList<>()).build();
+        field.multiply(differentThetaPhiAnglesField);
+    }
+
+    @Test(expectedExceptions = AntennaException.class, groups = "useCommonField")
+    public void multiplyExceptionDifferentElectricalFieldTest() {
+        List<ThetaPhi> thetaPhiList = new ArrayList<>();
+        thetaPhiList.add(ThetaPhi.fromDegrees(90, 0));
+        Field differentElectricalFieldField = Field.newBuilder().addElectricField(ElectricField.PHI, new ArrayList<>())
+                .setThetaPhiList(thetaPhiList).build();
+        field.multiply(differentElectricalFieldField);
+    }
+
+    @Test(expectedExceptions = AntennaException.class, groups = "useCommonField")
+    public void multiplyExceptionDifferentFieldTypeTest() {
+        List<Complex> electricField = new ArrayList<>();
+        electricField.add(new Complex(1, 0));
+        List<ThetaPhi> thetaPhiList = new ArrayList<>();
+        thetaPhiList.add(ThetaPhi.fromDegrees(90, 0));
+        Field differentFieldTypeField = Field.newBuilder().addElectricField(ElectricField.RELATIVE_GAIN, electricField)
+                .setThetaPhiList(thetaPhiList).setFieldType(null).build();
+        field.multiply(differentFieldTypeField);
     }
 
 }

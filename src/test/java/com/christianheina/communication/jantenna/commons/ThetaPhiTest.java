@@ -76,4 +76,29 @@ public class ThetaPhiTest {
         return t -> seen.add(keyExtractor.apply(t));
     }
 
+    @Test
+    public void equalsTest() {
+        ThetaPhi thetaPhi1 = ThetaPhi.fromDegrees(0, 0);
+        Assert.assertEquals(thetaPhi1, thetaPhi1);
+        Assert.assertFalse(thetaPhi1.equals(this));
+
+        ThetaPhi thetaPhi2 = ThetaPhi.fromDegrees(0, 0);
+        Assert.assertEquals(thetaPhi1, thetaPhi2);
+
+        ThetaPhi thetaPhi3 = ThetaPhi.fromDegrees(10, 0);
+        Assert.assertNotEquals(thetaPhi1, thetaPhi3);
+
+        ThetaPhi thetaPhi4 = ThetaPhi.fromDegrees(0, 10);
+        Assert.assertNotEquals(thetaPhi1, thetaPhi4);
+
+        List<ThetaPhi> thetaPhiList1 = ThetaPhi.equallySpacedSphere(1);
+        Assert.assertEquals(thetaPhiList1, thetaPhiList1);
+
+        List<ThetaPhi> thetaPhiList2 = ThetaPhi.equallySpacedSphere(1);
+        Assert.assertEquals(thetaPhiList1, thetaPhiList2);
+
+        List<ThetaPhi> thetaPhiList3 = ThetaPhi.equallySpacedSphere(2);
+        Assert.assertNotEquals(thetaPhiList1, thetaPhiList3);
+    }
+
 }
