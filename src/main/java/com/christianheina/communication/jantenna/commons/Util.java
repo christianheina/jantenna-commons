@@ -16,6 +16,8 @@
 
 package com.christianheina.communication.jantenna.commons;
 
+import com.christianheina.common.utilities.constants.Constants;
+
 /**
  * Utilities for antenna.
  * 
@@ -35,7 +37,7 @@ public class Util {
      * @return calculated lambda
      */
     public static double calculateLambda(double frequency) {
-        return calculateLambda(frequency, Constants.VACCUM_SPEED_OF_LIGHT);
+        return calculateLambda(frequency, Constants.VACUUM_SPEED_OF_LIGHT);
     }
 
     /**

@@ -29,6 +29,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<common-utilities.version>0.0.2</common-utilities.version>
 		<commons-math3.version>3.6.1</commons-math3.version>
 		<gson.version>2.12.1</gson.version>
 		<testng.version>7.10.2</testng.version>
@@ -42,6 +43,11 @@
 
 	<dependencies>
 		<!-- Compile dependencies -->
+		<dependency>
+			<groupId>com.christianheina.common</groupId>
+			<artifactId>common-utilities</artifactId>
+			<version>${common-utilities.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-math3</artifactId>

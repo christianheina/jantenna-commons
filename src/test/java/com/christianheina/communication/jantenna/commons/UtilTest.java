@@ -19,6 +19,8 @@ package com.christianheina.communication.jantenna.commons;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.christianheina.common.utilities.constants.Constants;
+
 /**
  * Unit test for {@link Util}
  * 
@@ -31,7 +33,7 @@ public class UtilTest {
     public void lambdaTest() {
         double freq = 2e9;
         double lambda = Util.calculateLambda(freq);
-        Assert.assertTrue(lambda == Constants.VACCUM_SPEED_OF_LIGHT / freq);
+        Assert.assertTrue(lambda == Constants.VACUUM_SPEED_OF_LIGHT / freq);
         lambda = Util.calculateLambda(freq, 300000);
         Assert.assertTrue(lambda == 300000 / freq);
     }

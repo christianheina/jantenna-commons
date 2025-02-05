@@ -20,7 +20,12 @@ package com.christianheina.communication.jantenna.commons;
  * Constants
  * 
  * @author Christian Heina (developer@christianheina.com)
+ * 
+ * @deprecated As of 2025-02-05 this is replaced by {@link com.christianheina.common.utilities.constants.Constants
+ *             com.christianheina.common.utilities.constants.Constants}. This class will be supported until 2025-05-05
+ *             and removed 2023-08-05.
  */
+@Deprecated
 public class Constants {
 
     private Constants() {
@@ -28,7 +33,13 @@ public class Constants {
 
     /**
      * Speed of light in VACCUM.
+     * 
+     * @deprecated As of 2025-02-05 this is replaced by
+     *             {@link com.christianheina.common.utilities.constants.Constants#VACUUM_SPEED_OF_LIGHT
+     *             com.christianheina.common.utilities.constants.Constants#VACUUM_SPEED_OF_LIGHT}. This class will be
+     *             supported until 2025-05-05 and removed 2023-08-05.
      */
+    @Deprecated
     public static final int VACCUM_SPEED_OF_LIGHT = 299792458;
 
 }
