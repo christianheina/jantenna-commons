@@ -27,17 +27,17 @@ import org.testng.annotations.Test;
 public class AntennaExceptionTest {
 
     @Test(expectedExceptions = AntennaException.class)
-    public void PhasedArrayAntennaExceptionWithMessageTest() {
+    public void antennaExceptionWithMessageTest() {
         throw new AntennaException("Test");
     }
 
     @Test(expectedExceptions = AntennaException.class)
-    public void PhasedArrayAntennaExceptionWithThrowableTest() {
+    public void antennaExceptionWithThrowableTest() {
         throw new AntennaException(new RuntimeException());
     }
 
     @Test(expectedExceptions = AntennaException.class)
-    public void PhasedArrayAntennaExceptionWithMessageAndThrowableTest() {
+    public void antennaExceptionWithMessageAndThrowableTest() {
         throw new AntennaException("Test", new RuntimeException());
     }
 
