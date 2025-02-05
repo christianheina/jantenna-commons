@@ -32,7 +32,7 @@ import com.christianheina.communication.jantenna.commons.ThetaPhi;
  * 
  * @author Christian Heina (developer@christianheina.com)
  */
-@SuppressWarnings("javadoc")
+@SuppressWarnings({ "javadoc", "uncommentedmain" })
 public class SaveField {
 
     private static final String FILENAME = "example_save_field.json";

@@ -25,7 +25,7 @@ import com.christianheina.communication.jantenna.commons.Field;
  * 
  * @author Christian Heina (developer@christianheina.com)
  */
-@SuppressWarnings("javadoc")
+@SuppressWarnings({ "javadoc", "uncommentedmain" })
 public class LoadField {
 
     private static final String FILENAME = "src/test/resources/example_load_field.json";

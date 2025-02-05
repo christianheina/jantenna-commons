@@ -31,7 +31,7 @@ import com.christianheina.communication.jantenna.commons.ThetaPhi;
  * 
  * @author Christian Heina (developer@christianheina.com)
  */
-@SuppressWarnings("javadoc")
+@SuppressWarnings({ "javadoc", "uncommentedmain" })
 public class CreateField {
 
     @SuppressWarnings("unused")
